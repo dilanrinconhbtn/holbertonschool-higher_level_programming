@@ -1,4 +1,6 @@
 #!/usr/bin/python3
 from add_0 import add
-ans = add(1, 2)
-print("1 + 2 = {}".format(ans))
+a = 1
+b = 2
+ans = add(a, b)
+print("{} + {} = {}".format(a, b, ans))
