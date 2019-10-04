@@ -1,4 +1,21 @@
-This is a simple doctest that checks some of Python's arithmetic
- operations.
->>> 2 + 2
-4
+>>> add_integer = __import__('0-add_integer').add_integer
+>>> add_integer(2, 100)
+102
+>>> add_integer("lel", 4)
+Traceback (most recent call last):
+...
+TypeError: a must be an integer
+>>> add_integer(4, "lel")
+Traceback (most recent call last):
+...
+TypeError: b must be an integer
+>>> add_integer(2)
+100
+>>> add_integer()
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'
+>>> add_integer(, 100)
+Traceback (most recent call last):
+...
+TypeError: add_integer() missing 1 required positional argument: 'a'
