@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 class Rectangle:
-    """ 
+    """
     Class Rectangle
     """
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
-        
+
     @property
     def width(self):
         return self.__width
@@ -30,7 +30,6 @@ class Rectangle:
         if value < 0:
             raise ValueError("wigth must be >= 0")
         self.__height = value
-    
 
     def area(self):
         """
