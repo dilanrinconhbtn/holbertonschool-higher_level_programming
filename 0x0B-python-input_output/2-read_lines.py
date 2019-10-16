@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 def read_lines(filename="", nb_lines=0):
-    with open(filename, encoding='utf-8') as file:
+    with open(filename, encoding='utf-8') as f:
         if nb_lines <= 0:
-            print(file.read(), end="")
+            print(f.read(), end="")
         else:
             for l in range(nb_lines):
-                print(file.readline(), end="")
+                print(f.readline(), end="")
