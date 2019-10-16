@@ -1,20 +1,21 @@
 #!/usr/bin/python3
-""" class BaseGeometry"""
+
+"""Class Base Geometry patern"""
 
 
 class BaseGeometry():
     def area(self):
-        """ area """
+        """area"""
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        """ validate value is integer grather than 0"""
+        """ Validate if value is integer grater than 0"""
         if type(value) is not int:
             raise TypeError("{} must be an integer".format(name))
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
 
-""" class Rectangle"""
+""" Class Rectangle"""
 
 
 class Rectangle(BaseGeometry):
@@ -25,9 +26,27 @@ class Rectangle(BaseGeometry):
         self.__height = height
 
     def __str__(self):
-        """ mod print"""
+        """Modifying the print"""
         return("[Rectangle] {}/{}".format(self.__width, self.__height))
 
     def area(self):
-        """ area = sidth * height"""
+        """Mult width and hwight for have the area"""
         return self.__width * self.__height
+
+""" Class Square"""
+
+
+class Square(BaseGeometry):
+
+    def __init__(self, size):
+        self.integer_validator("size", size)
+        super().__init__(size, size)
+        self.__size = size
+
+    def __str__(self):
+        "Modifiying the print"""
+        return("[Rectangle] {:d}/{:d}".format(self.__size, self.__size))
+
+    def area(self):
+        """Mult size * size for have the area of Square"""
+        return self.__size * self.__size
