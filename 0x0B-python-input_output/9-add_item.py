@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 import os
 import sys
-save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
+save = __import__('7-save_to_json_file').save_to_json_file
+load = __import__('8-load_from_json_file').load_from_json_file
 
 
-if os.path.exists('add_item.json') is True:
-    lis = list(load_from_json_file("add_item.json"))
-    for i in range(1, len(sys.argv)):
-        lis.append(sys.argv[i])
-    save_to_json_file(lis, "add_item.json")
-else:
-    lis = []
-    save_to_json_file(lis, "add_item.json")
+lis = []
+
+if os.path.exists('add_item.json'):
+    lis = list(load("add_item.json"))
+
+for i in range(1, len(sys.argv)):
+    lis.append(sys.argv[i])
+
+save(lis, "add_item.json")
