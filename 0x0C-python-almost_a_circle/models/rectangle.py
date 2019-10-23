@@ -93,14 +93,13 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         """update the arguments"""
-        if args is None and len(args) is not 0:
+        if args is not None and len(args) != 0:
             argumentos = ['id', 'width', 'height', 'x', 'y']
             for i in range(len(args)):
                 setattr(self, argumentos[i], args[i])
         else:
             for arg, value in kwargs.items():
                 setattr(self, arg, value)
-
     def to_dictionary(self):
         """Class rectangle representate in a dictionary form"""
         argumentos = ['id', 'width', 'height', 'x', 'y']
