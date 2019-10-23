@@ -41,7 +41,6 @@ class Base:
         with open(filename, mode='w') as f:
             f.write(diccionario)
 
-
     @staticmethod
     def from_json_string(json_string):
         """from_json_string"""
