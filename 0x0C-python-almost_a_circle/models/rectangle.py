@@ -100,6 +100,7 @@ class Rectangle(Base):
         else:
             for arg, value in kwargs.items():
                 setattr(self, arg, value)
+
     def to_dictionary(self):
         """Class rectangle representate in a dictionary form"""
         argumentos = ['id', 'width', 'height', 'x', 'y']
