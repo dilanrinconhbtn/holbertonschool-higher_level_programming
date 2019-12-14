@@ -12,12 +12,12 @@ if __name__ == "__main__":
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-Session = sessionmaker(bind=engine)
-N_session = Session()
-i = 0
-for instance in N_session.query(State).order_by(State.id):
-    if i is 0:
-        print("{}: {}".format(instance.id, instance.name))
-    i += 1
+    Session = sessionmaker(bind=engine)
+    N_session = Session()
+    i = 0
+    for instance in N_session.query(State).order_by(State.id):
+        if i is 0:
+            print("{}: {}".format(instance.id, instance.name))
+            i += 1
 
-N_session.close()
+    N_session.close()
