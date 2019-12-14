@@ -12,11 +12,11 @@ if __name__ == "__main__":
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-Session = sessionmaker(bind=engine)
-N_session = Session()
+    Session = sessionmaker(bind=engine)
+    N_session = Session()
 
 
-N_user = State(name="Louisiana")
-N_session.add(N_user)
-N_session.commit()
-N_session.close()
+    N_user = State(name="Louisiana")
+    N_session.add(N_user)
+    N_session.commit()
+    N_session.close()
