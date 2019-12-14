@@ -7,7 +7,9 @@ def selection(a, b, c, d):
     """selection from table states order by id states and just letter N"""
     db = MySQLdb.connect(user=a, passwd=b, db=c, port=3306)
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name = '{}' ORDER BY states.id ASC".format(d))
+    cur.execute("""SELECT * FROM states
+    WHERE name = '{}'
+    ORDER BY states.id ASC""".format(d))
     show = cur.fetchall()
     for x in show:
         print(x)

@@ -7,7 +7,11 @@ def selection(a, b, c, d):
     """selection from table states order by id states and just letter N"""
     db = MySQLdb.connect(user=a, passwd=b, db=c, port=3306)
     cur = db.cursor()
-    cur.execute("SELECT cities.name FROM cities JOIN states ON states.id = cities.state_id WHERE states.name = %(d)s ORDER BY cities.id", {'d': d});
+    cur.execute("""SELECT cities.name
+    FROM cities
+    JOIN states ON states.id = cities.state_id
+    WHERE states.name = %(d)s
+    ORDER BY cities.id""", {'d': d})
 
     show = cur.fetchall()
     i = 0
