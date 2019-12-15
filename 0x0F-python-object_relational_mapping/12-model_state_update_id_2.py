@@ -15,6 +15,7 @@ if __name__ == "__main__":
     N_session = Session()
 
     change = N_session.query(State).filter(State.id == 2).first()
+    change.name = "New Mexico"
 
     N_session.commit()
     N_session.close()
