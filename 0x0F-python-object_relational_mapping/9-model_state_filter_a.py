@@ -15,10 +15,9 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     N_session = Session()
 
-    for instance in N_session.query(State).order_by(State.id):
-        for letter in range(len(instance.name)):
-            if instance.name[letter] == 'a':
-                print("{}: {}".format(instance.id, instance.name))
-                break
+    compare = N_session.query(State).filter(State.name.like('%a%'))
+
+    for i in compare:
+        print("{}: {}".format(i.id, i.name))
 
     N_session.close()
