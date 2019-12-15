@@ -15,12 +15,12 @@ if __name__ == "__main__":
 
     Session = sessionmaker(bind=engine)
     N_session = Session()
-    state_found = 0
-    for instance in N_session.query(State).order_by(State.id):
-        if instance.name == name_search:
-            print("{}".format(instance.id))
-            state_found += 1
 
-    if state_found == 0:
+    state_found = N_session.query(State).filter(State.name == (sys.argv[4]))
+
+    try:
+        print(state_found[0].id)
+    except:
         print("Not found")
+
     N_session.close()
