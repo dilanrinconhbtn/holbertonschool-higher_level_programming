@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-import MySQLdb
-import sys
 
+import MySQLdb
+from sys import argv
 
 """
-a script that lists all states
+Lists all states with a name starting with N
 """
 if __name__ == "__main__":
 
@@ -12,9 +12,8 @@ if __name__ == "__main__":
                          db=argv[3], port=3306)
 
     cur = db.cursor()
-    cur.execute("""SELECT * FROM states
-    WHERE name LIKE BINARY'N%'\
-    ORDER BY states.id""")
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY'N%'\
+                ORDER BY states.id")
     rows = cur.fetchall()
     for row in rows:
         print(row)
