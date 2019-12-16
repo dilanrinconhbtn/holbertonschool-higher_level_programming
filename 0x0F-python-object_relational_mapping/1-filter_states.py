@@ -3,19 +3,17 @@ import MySQLdb
 import sys
 
 
-def selection(a, b, c):
-    """selection from table states order by id states and just letter N"""
-    db = MySQLdb.connect(user=a, passwd=b, db=c, port=3306)
+if __name__ == "__main__":
+
+    db = MySQLdb.connect(host="localhost", user=argv[1], passwd=argv[2],
+                         db=argv[3], port=3306)
+
     cur = db.cursor()
     cur.execute("""SELECT * FROM states
-    WHERE name LIKE 'N%'
-    ORDER BY states.id ASC""")
-    show = cur.fetchall()
-    for x in show:
-        print(x)
-    """close connection"""
+    WHERE name LIKE BINARY'N%'\
+    ORDER BY states.id""")
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
     cur.close()
     db.close()
-
-if __name__ == '__main__':
-    selection(sys.argv[1], sys.argv[2], sys.argv[3])
