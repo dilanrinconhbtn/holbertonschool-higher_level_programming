@@ -1,21 +1,21 @@
 #!/usr/bin/python3
+
 import MySQLdb
-import sys
+from sys import argv
 
+"""
+displays all values in the states table
+"""
+if __name__ == "__main__":
 
-def selection(a, b, c, d):
-    """selection from table states order by id states and just letter N"""
-    db = MySQLdb.connect(user=a, passwd=b, db=c, port=3306)
+    db = MySQLdb.connect(host="localhost", user=argv[1], passwd=argv[2],
+                         db=argv[3], port=3306)
+
     cur = db.cursor()
-    cur.execute("""SELECT * FROM states
-    WHERE name = '{}'
-    ORDER BY states.id ASC""".format(d))
-    show = cur.fetchall()
-    for x in show:
-        print(x)
-    """close connection"""
+    cur.execute("SELECT * FROM states\
+                WHERE name LIKE BINARY '{}'".format(argv[4]))
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
     cur.close()
     db.close()
-
-if __name__ == '__main__':
-    selection(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
