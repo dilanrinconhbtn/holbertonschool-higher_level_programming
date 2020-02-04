@@ -1,12 +1,12 @@
 #!/usr/bin/node
-
+const f = parseInt(process.argv[2]);
+let total = 0;
 function facotrial (a) {
-  var total = 1;
-  for (let i = 1; i <= a; i++) {
-    total = total * i;
+  if (!a) {
+    return (1);
+  } else {
+    return (a * facotrial(a - 1));
   }
-  console.log(total);
 }
-
-const argu = parseInt(process.argv[2], 10);
-facotrial(argu);
+total = facotrial(f);
+console.log(total);
