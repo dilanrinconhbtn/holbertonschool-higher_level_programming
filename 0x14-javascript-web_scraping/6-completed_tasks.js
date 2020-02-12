@@ -1,24 +1,20 @@
 #!/usr/bin/node
 const request = require('request');
-const url = process.argv[2];
-var dic = {};
-var counter = 1;
-request(url, function (err, response, body) {
+request(process.argv[2], function (err, response, body) {
   if (err) {
-    console.error(err);
+    console.log(err);
   } else {
+    const user = {};
     const obj = JSON.parse(body);
-    for (const x in obj) {
-      if (obj[x].completed === true) {
-        if (obj[x].userId in dic) {
-          counter++;
-          dic[obj[x].userId] = counter;
+    for (const key of obj) {
+      if (key.completed === true) {
+        if (!(key.userId in user)) {
+          user[key.userId] = 1;
         } else {
-          counter = 1;
-          dic[obj[x].userId] = counter;
+          user[key.userId]++;
         }
       }
     }
-    console.log(dic);
+    console.log(user);
   }
 });
